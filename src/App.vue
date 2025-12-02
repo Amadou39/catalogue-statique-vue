@@ -9,10 +9,12 @@ import Header from '@/components/Header.vue'; // Assurez-vous d'avoir créé ce 
 </script>
 
 <style>
-/* Styles globaux (si besoin) */
+
+/* Utilisation de polices modernes et lisibles (Roboto, Lato ou Inter sont de bons choix) */
 body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  color: #1a1a1a; /* Noir très foncé */
+  background-color: #f8f8f8; /* Gris très clair pour le fond */
+  line-height: 1.6;
 }
 </style>

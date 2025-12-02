@@ -2,7 +2,7 @@
   <header class="app-header">
     <nav class="nav-container">
       <RouterLink :to="{ name: 'catalogue' }" class="site-title">
-        Habits et compagnie
+        Habits et Compagnie
       </RouterLink>
     </nav>
   </header>

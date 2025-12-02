@@ -11,15 +11,15 @@
         @filter-change="updateCategory"
     />
 
-    <div class="product-list">
+    <div class="produit-list">
       <ProductsCard
-          v-for="product in filteredProducts"
-          :key="product.id"
-          :product="product"
+          v-for="produit in produitsFiltres"
+          :key="produit.id"
+          :produit="produit"
       />
     </div>
 
-    <div v-if="filteredProducts.length === 0" class="no-results">
+    <div v-if="produitsFiltres.length === 0" class="no-results">
       Aucun produit dans cette catégorie.
     </div>
   </div>
@@ -29,7 +29,7 @@
 import { ref, computed } from 'vue';
 import ProductsCard from '@/components/ProductsCard.vue';
 import CategoryFilter from '@/components/CategoryFilter.vue';
-import { products } from '@/data/products.js';
+import { produits } from '@/data/produits.js';
 
 const selectedCategory = ref('Tout');
 
@@ -38,11 +38,11 @@ const updateCategory = (category) => {
 };
 
 // Logique de filtrage
-const filteredProducts = computed(() => {
+const produitsFiltres = computed(() => {
   if (selectedCategory.value === 'Tout') {
-    return products;
+    return produits;
   }
-  return products.filter(p => p.category === selectedCategory.value);
+  return produits.filter(p => p.category === selectedCategory.value);
 });
 </script>
 

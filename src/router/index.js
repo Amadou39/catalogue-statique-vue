@@ -15,8 +15,8 @@ const router = createRouter({
         },
         // 2. VOTRE ROUTE DYNAMIQUE (C'EST LA BONNE SYNTAXE)
         {
-            path: '/product/:id',
-            name: 'product-detail',
+            path: '/produit/:id',
+            name: 'produit-detail',
             component: ProductDetailView,
             props: true // Permet de passer l'ID comme prop au composant
         }

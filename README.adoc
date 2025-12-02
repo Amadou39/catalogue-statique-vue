@@ -1,0 +1,82 @@
+= Catalogue de Produits Statiques
+
+This template should help get you started developing with Vue 3 in Vite.
+
+== Recommended IDE Setup
+
+* link:https://code.visualstudio.com/[VS Code] + link:https://marketplace.visualstudio.com/items?itemName=Vue.volar[Vue (Official)] (and disable Vetur).
+
+== Recommended Browser Setup
+
+* Chromium-based browsers (Chrome, Edge, Brave, etc.):
+** link:https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd[Vue.js devtools]
+** link:http://bit.ly/object-formatters[Turn on Custom Object Formatter in Chrome DevTools]
+* Firefox:
+** link:https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/[Vue.js devtools]
+** link:https://fxdx.dev/firefox-devtools-custom-object-formatters/[Turn on Custom Object Formatter in Firefox DevTools]
+
+== Customize configuration
+
+See link:https://vite.dev/config/[Vite Configuration Reference].
+
+== Project Setup
+
+[source, sh]
+----
+npm install
+----
+
+=== Compile and Hot-Reload for Development
+
+[source, sh]
+----
+npm run dev
+----
+
+=== Compile and Minify for Production
+
+[source, sh]
+----
+npm run build
+----
+
+= Catalogue de Produits Statiques
+
+// ... (Anciennes sections comme IDE Setup, Project Setup, etc.) ...
+
+== Contexte Métier et Décisions Techniques
+
+Ce projet a été développé dans le cadre de l'atelier professionnel de BTS SIO pour la création d'un site de vente en ligne statique/semi-dynamique (Phase 1 : Statique/Vue.js).
+
+=== Objectifs Métier
+
+* **Affichage du catalogue :** Permettre aux utilisateurs de visualiser l'ensemble des produits disponibles avec leurs informations de base (nom, prix, catégorie).
+* **Détail Produit :** Offrir une page dédiée pour chaque produit avec une description complète.
+* **Montée en compétence :** Maîtrise des concepts de routage dynamique (`/product/:id`) avec Vue Router.
+
+=== Choix de l'Architecture Technique
+
+* **Front-end :**
+* **Framework :** Vue.js 3 (Composition API) pour sa légèreté et sa performance.
+* **Construction :** Vite pour un démarrage et un rechargement rapides.
+* **Routage :** Vue Router 4 pour la gestion des URL (ex: la route dynamique `/product/:id`).
+* **Back-end (Évolution) :**
+* **Langage/Runtime :** Node.js/Express pour créer une API RESTful légère.
+* **Base de Données :** MySQL pour la persistance des données du catalogue.
+
+=== Modèle de Données (BDD)
+
+La persistance des données sera gérée par la table `produits` (voir ci-dessous) :
+
+[cols="1,2,2,4", options="header"]
+|===
+|Attribut |Type SQL |Description | Correspondance Vue.js
+|id |INT (PK, Auto-incrément) |Identifiant unique du produit. | `produit.id`
+|nom |VARCHAR(100) |Nom du produit. | `produit.nom`
+|prix |DECIMAL(10, 2) |Prix de vente TTC. | `produit.prix`
+|categorie |VARCHAR(50) |Type de produit (Vêtements, Accessoires). | `produit.categorie`
+|description |TEXT |Texte descriptif détaillé. | `produit.description`
+|image |VARCHAR(255) |Nom du fichier image associé. | `produit.image`
+|===
+
+// ... Le reste du fichier ADOC original ...

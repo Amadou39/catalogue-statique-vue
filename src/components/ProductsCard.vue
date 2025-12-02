@@ -1,8 +1,8 @@
 <template>
   <div class="product-card">
-    <RouterLink :to="{ name: 'product-detail', params: { id: product.id } }">
-      <h3 class="product-name">{{ product.name }}</h3>
-      <p class="product-price">{{ product.price.toFixed(2) }} €</p>
+    <RouterLink :to="{ name: 'produit-detail', params: { id: produit.id } }">
+      <h3 class="produit-nom">{{ produit.nom }}</h3>
+      <p class="produit-prix">{{ produit.prix.toFixed(2) }} €</p>
       <button class="detail-button">Voir Détail</button>
     </RouterLink>
   </div>
@@ -13,7 +13,7 @@ import { RouterLink } from 'vue-router';
 
 // Définit les props que le composant attend de sa Vue parente
 const props = defineProps({
-  product: {
+  produit: {
     type: Object,
     required: true,
   }
@@ -37,12 +37,12 @@ const props = defineProps({
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-name {
+.produit-nom {
   color: #333;
   font-size: 1.2em;
 }
 
-.product-price {
+.produit-prix {
   color: #007bff;
   font-weight: bold;
   margin: 10px 0;

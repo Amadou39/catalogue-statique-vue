@@ -1,19 +1,19 @@
 <template>
   <div class="detail-container">
-    <div v-if="product">
+    <div v-if="produit">
       <div class="image-placeholder">
-        <span>📸 Image: {{ product.image }}</span>
+        <span>📸 Image: {{ produit.image }}</span>
       </div>
 
-      <h2 class="detail-name">{{ product.name }}</h2>
-      <p class="detail-description">{{ product.description }}</p>
+      <h2 class="detail-name">{{ produit.nom }}</h2>
+      <p class="detail-description">{{ produit.description }}</p>
 
-      <p class="detail-price">{{ product.price.toFixed(2) }} €</p>
+      <p class="detail-price">{{ produit.prix.toFixed(2) }} €</p>
 
-      <div class="options-container" v-if="product.sizes">
+      <div class="options-container" v-if="produit.tailles">
         <p class="option-label">Taille</p>
-        <div class="sizes">
-          <button v-for="size in product.sizes" :key="size" class="size-btn">{{ size }}</button>
+        <div class="tailles">
+          <button v-for="taille in produit.tailles" :key="taille" class="size-btn">{{ taille }}</button>
         </div>
       </div>
 
@@ -32,10 +32,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { products } from '@/data/products.js';
+import { produits } from '@/data/produits.js';
 
 const props = defineProps({ id: { type: [String, Number], required: true } });
-const product = computed(() => products.find(p => p.id === parseInt(props.id)));
+const produit = computed(() => produits.find(p => p.id === parseInt(props.id)));
 </script>
 
 <style scoped>
@@ -90,7 +90,7 @@ const product = computed(() => products.find(p => p.id === parseInt(props.id)));
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
-.sizes {
+.tailles {
   display: flex;
   justify-content: center; /* Centre les boutons horizontalement */
   gap: 10px;

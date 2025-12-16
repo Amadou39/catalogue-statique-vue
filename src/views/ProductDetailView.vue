@@ -1,14 +1,24 @@
 <template>
   <div class="detail-container">
     <div v-if="produit">
-      <div class="image-placeholder">
+<!--      <div class="image-placeholder">
         <span>📸 Image: {{ produit.image }}</span>
+      </div>-->
+
+
+      <div class="image-container">
+        <img
+            :src="`/images/${produit.image}`"
+            :alt="produit.nom"
+            class="detail-img"
+        >
       </div>
 
       <h2 class="detail-name">{{ produit.nom }}</h2>
       <p class="detail-description">{{ produit.description }}</p>
 
-      <p class="detail-price">{{ produit.prix.toFixed(2) }} €</p>
+<!--      <p class="detail-price">{{ produit.prix.toFixed(2) }} €</p>-->
+      <p class="detail-price">{{ parseFloat(produit.prix).toFixed(2) }} €</p>
 
       <div class="options-container" v-if="produit.tailles">
         <p class="option-label">Taille</p>
@@ -23,20 +33,52 @@
         <RouterLink to="/" class="back-link">← Retour au Catalogue</RouterLink>
       </div>
     </div>
-
     <div v-else class="not-found">
       ❌ Produit introuvable
     </div>
   </div>
 </template>
 
-<script setup>
+    <script setup>
+      import { ref, onMounted } from 'vue';
+
+      // Récupère l'ID passé par le routeur
+      const props = defineProps({
+        id: {
+          type: String,
+          required: true
+        }
+      });
+
+      const produit = ref(null);
+
+      // Fonction Fetch pour appeler ton serveur Node.js
+      const chargerDonnees = async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/api/produits/${props.id}`);
+          if (!response.ok) throw new Error('Produit non trouvé');
+          produit.value = await response.json();
+          console.log(produit);
+          console.log(produit.value);
+        } catch (error) {
+          console.error("Erreur de chargement :", error);
+        }
+      };
+
+      onMounted(() => {
+        chargerDonnees();
+      });
+    </script>
+
+
+
+<!--<script setup>
 import { computed } from 'vue';
 import { produits } from '@/data/produits.js';
 
 const props = defineProps({ id: { type: [String, Number], required: true } });
 const produit = computed(() => produits.find(p => p.id === parseInt(props.id)));
-</script>
+</script>-->
 
 <style scoped>
 .detail-container {
